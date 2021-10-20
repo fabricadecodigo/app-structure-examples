@@ -1,10 +1,16 @@
+import { IGetAllCustomerHandler } from './igetall-customer.handler';
 import { ICustomerListResponse } from '../responses';
-import { Injectable } from '@nestjs/common';
-import { CustomerRepository } from '@domain/repositories';
+import { Inject, Injectable } from '@nestjs/common';
+import {
+  ICustomerRepository,
+  ICustomerRepositoryName,
+} from '@domain/repositories';
 
 @Injectable()
-export class GetAllCustomerHandler {
-  constructor(private repository: CustomerRepository) {}
+export class GetAllCustomerHandler implements IGetAllCustomerHandler {
+  constructor(
+    @Inject(ICustomerRepositoryName) private repository: ICustomerRepository,
+  ) {}
 
   async execute(): Promise<ICustomerListResponse> {
     const customers = await this.repository.findAll();

@@ -1,8 +1,18 @@
-import { Module } from '@nestjs/common';
-import { CustomerRepository } from '@domain/repositories';
+import { Module, Provider } from '@nestjs/common';
+import {
+  CustomerRepository,
+  ICustomerRepositoryName,
+} from '@domain/repositories';
+
+const providers: Provider[] = [
+  {
+    provide: ICustomerRepositoryName,
+    useClass: CustomerRepository,
+  },
+];
 
 @Module({
-  providers: [CustomerRepository],
-  exports: [CustomerRepository],
+  providers: providers,
+  exports: providers,
 })
 export class DomainModule {}

@@ -6,13 +6,19 @@ import {
   Delete,
   Get,
   Param,
+  Inject,
 } from '@nestjs/common';
 import {
-  CreateCustomerHandler,
-  UpdateCustomerHandler,
-  DeleteCustomerHandler,
-  GetByIdCustomerHandler,
-  GetAllCustomerHandler,
+  IUpdateCustomerHandler,
+  IDeleteCustomerHandler,
+  IDeleteCustomerHandlerName,
+  IGetByIdCustomerHandler,
+  IGetAllCustomerHandler,
+  ICreateCustomerHandlerName,
+  ICreateCustomerHandler,
+  IUpdateCustomerHandlerName,
+  IGetByIdCustomerHandlerName,
+  IGetAllCustomerHandlerName,
 } from '@business-rules/customers/handlers';
 import {
   ICreateCustomerRequest,
@@ -26,11 +32,16 @@ import {
 @Controller('customers')
 export class CustomerController {
   constructor(
-    private createCustomerHandler: CreateCustomerHandler,
-    private updateCustomerHandler: UpdateCustomerHandler,
-    private deleteCustomerHandler: DeleteCustomerHandler,
-    private getByIdCustomerHandler: GetByIdCustomerHandler,
-    private getAllCustomerHandler: GetAllCustomerHandler,
+    @Inject(ICreateCustomerHandlerName)
+    private createCustomerHandler: ICreateCustomerHandler,
+    @Inject(IUpdateCustomerHandlerName)
+    private updateCustomerHandler: IUpdateCustomerHandler,
+    @Inject(IDeleteCustomerHandlerName)
+    private deleteCustomerHandler: IDeleteCustomerHandler,
+    @Inject(IGetByIdCustomerHandlerName)
+    private getByIdCustomerHandler: IGetByIdCustomerHandler,
+    @Inject(IGetAllCustomerHandlerName)
+    private getAllCustomerHandler: IGetAllCustomerHandler,
   ) {}
 
   @Post()

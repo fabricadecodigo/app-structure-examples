@@ -1,8 +1,9 @@
 import { ICustomer } from '@domain/models';
 import { Injectable } from '@nestjs/common';
+import { ICustomerRepository } from './icustomer.repository';
 
 @Injectable()
-export class CustomerRepository {
+export class CustomerRepository implements ICustomerRepository {
   private customers: ICustomer[] = [];
 
   create(customer: ICustomer): Promise<ICustomer> {
