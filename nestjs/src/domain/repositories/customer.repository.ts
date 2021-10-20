@@ -9,7 +9,7 @@ export class CustomerRepository implements ICustomerRepository {
   create(customer: ICustomer): Promise<ICustomer> {
     return new Promise((resolve) => {
       customer.id = (this.customers.length + 1).toString();
-      customer.createAt = new Date();
+      customer.createdAt = new Date();
       this.customers.push(customer);
       resolve(customer);
     });
@@ -18,7 +18,7 @@ export class CustomerRepository implements ICustomerRepository {
   update(customer: ICustomer): Promise<ICustomer> {
     return new Promise((resolve) => {
       const { id } = customer;
-      customer.updateAt = new Date();
+      customer.updatedAt = new Date();
       const entity = this.customers.find((c) => c.id === id);
       Object.assign(entity, customer);
 
