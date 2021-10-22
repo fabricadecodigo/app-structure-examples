@@ -16,11 +16,11 @@ namespace dotnet.BusinessRules.Customers.Handlers
             _customerRepository = customerRepository;
         }
 
-        public CustomerResponse ExecuteAsync(CreateCustomerRequest request)
+        public CustomerResponse Execute(CreateCustomerRequest request)
         {
             var customer = _customerRepository.Create(new Customer
             {
-                Name = request.Email,
+                Name = request.Name,
                 Email = request.Email,
                 BirthDate = request.BirthDate
             });

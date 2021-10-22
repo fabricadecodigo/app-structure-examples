@@ -15,7 +15,7 @@ namespace dotnet.BusinessRules.Customers.Handlers
             _customerRepository = customerRepository;
         }
 
-        public CustomerListResponse ExecuteAsync()
+        public CustomerListResponse Execute()
         {
             var customers = _customerRepository.FindAll();
             return new CustomerListResponse

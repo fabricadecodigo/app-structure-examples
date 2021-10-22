@@ -16,7 +16,7 @@ namespace dotnet.BusinessRules.Customers.Handlers
             _customerRepository = customerRepository;
         }
 
-        public CustomerResponse ExecuteAsync(GetByIdCustomerRequest request)
+        public CustomerResponse Execute(GetByIdCustomerRequest request)
         {
             var customer = _customerRepository.FindById(request.Id);
             if (customer == null)

@@ -16,7 +16,7 @@ namespace dotnet.BusinessRules.Customers.Handlers
         }
 
 
-        public void ExecuteAsync(DeleteCustomerRequest request)
+        public void Execute(DeleteCustomerRequest request)
         {
             var customer = _customerRepository.FindById(request.Id);
             if (customer == null)
